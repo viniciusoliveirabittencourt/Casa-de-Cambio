@@ -11,7 +11,7 @@
   "type": "module",
   "author": "viniciusoliveirabittencourt",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "@trybe/eslint-config-frontend": "^1.11.3",
     "vite": "^4.3.9"
   }
