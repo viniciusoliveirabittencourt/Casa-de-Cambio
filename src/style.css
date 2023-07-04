@@ -23,6 +23,7 @@ body {
 
 #container h1 {
   font-size: 50px;
+  margin-top: 0;
 }
 
 #container h1 span {
