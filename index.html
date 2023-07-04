@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Casa de Câmbio</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Casa de Câmbio</h1>
+  <div id="container">
+    <h1>Casa de <span>Câmbio</span></h1>
     <form>
-      <label>Digite a moeda:</label>
-      <input id="currency" type="text" placeholder="USD" />
+      <div>
+        <label for="currency">Digite a moeda:</label>
+        <input id="currency" type="text" placeholder="USD" />
+      </div>
       <button id="button">Pesquisar</button>
     </form>
-    <table>
-      <thead>
-        <tr id="thead"></tr>
-      </thead>
-      <tbody>
-        <tr id="tbody"></tr>
-      </tbody>
-    </table>
+    <section id="section-currency">
+      <h3 id="currency-title"></h3>
+      <div id="container-currency"></div>
+    </section>
   </div>
   <script type="module" src="./src/main.js"></script>
 </body>
