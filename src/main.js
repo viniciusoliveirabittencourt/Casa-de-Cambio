@@ -9,7 +9,8 @@ async function callApi(cur) {
     .then((data) => data.rates)
     .then((objectCurrency) => {
       const currencyArr = Object.keys(objectCurrency);
-      return currencyArr.find((element) => element === cur);
+      const verify = currencyArr.find((element) => element === cur)
+      return verify ? objectCurrency : false;
     });
 }
 
