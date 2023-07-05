@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 import './style.css';
 
-const button = document.getElementById("button");
+const button = document.getElementById('button');
 
 async function callApi(cur) {
   return fetch(`https://api.exchangerate.host/latest?base=${cur}`)
@@ -10,7 +10,7 @@ async function callApi(cur) {
     .then((objectCurrency) => {
       const currencyArr = Object.keys(objectCurrency);
       return currencyArr.find((element) => element === cur);
-    })
+    });
 }
 
 function erroMessage(message) {
@@ -28,7 +28,7 @@ function createTbody(body) {
 
   for (let i = 0; i <= (currency.length - 1); i += 1) {
     const cellBody = document.createElement('div');
-    cellBody.classList.add('container-cur')
+    cellBody.classList.add('container-cur');
     const containerCoin = document.createElement('div');
     containerCoin.classList.add('container-coin');
     const coin = document.createElement('div');
@@ -55,8 +55,8 @@ function switchOffTd() {
   const currencyTitle = document.getElementById('currency-title');
   const containerCurrency = document.getElementById('container-currency');
 
-  currencyTitle.innerHTML = "";
-  containerCurrency.innerHTML = "";
+  currencyTitle.innerHTML = '';
+  containerCurrency.innerHTML = '';
 }
 
 button.addEventListener('click', async (e) => {
@@ -64,13 +64,15 @@ button.addEventListener('click', async (e) => {
   switchOffTd();
   const currency = document.getElementById('currency').value;
 
-  if (!currency)
-    return erroMessage("Você precisa passar uma moeda");
+  if (!currency) {
+    return erroMessage('Você precisa passar uma moeda');
+  }
 
   const allCurrencys = await callApi(currency);
 
-  if (!allCurrencys)
-    return erroMessage("Moeda não existente!");
+  if (!allCurrencys) {
+    return erroMessage('Moeda não existente!');
+  }
 
   createTheadAndCallTbody(currency, allCurrencys);
 });
