@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import './style.css';
 
 const button = document.getElementById("button");
@@ -6,6 +7,18 @@ async function callApi(cur) {
   return fetch(`https://api.exchangerate.host/latest?base=${cur}`)
     .then((promise) => promise.json())
     .then((data) => data.rates)
+    .then((objectCurrency) => {
+      const currencyArr = Object.keys(objectCurrency);
+      return currencyArr.find((element) => element === cur);
+    })
+}
+
+function erroMessage(message) {
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: message,
+  });
 }
 
 function createTbody(body) {
@@ -48,9 +61,16 @@ function switchOffTd() {
 
 button.addEventListener('click', async (e) => {
   e.preventDefault();
-  const currency = document.getElementById('currency').value;
   switchOffTd();
+  const currency = document.getElementById('currency').value;
+
+  if (!currency)
+    return erroMessage("Você precisa passar uma moeda");
 
   const allCurrencys = await callApi(currency);
+
+  if (!allCurrencys)
+    return erroMessage("Moeda não existente!");
+
   createTheadAndCallTbody(currency, allCurrencys);
 });
