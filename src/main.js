@@ -18,6 +18,9 @@ function erroMessage(message) {
     icon: 'error',
     title: 'Oops...',
     text: message,
+    background: '#19191900',
+    color: '#ffffff',
+    confirmButtonColor: '#96EB95',
   });
 }
 
